@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@EntityListeners(AuditingEntityListener.class)
 @Table(name = "usuarios")
 public class Usuario {
     @Id
@@ -16,17 +15,17 @@ public class Usuario {
     @Column(name = "id")
     private Long Id;
     @Column(name = "name")
-    private String nombre;
+    private String name;
     @Column(name = "surnames")
-    private String apellidos;
+    private String surnames;
     @Column(name = "password")
-    private String contraseña;
+    private String password;
     @Column(name = "email")
-    private String correoElectronico;
+    private String email;
     @Column(name = "address")
-    private String direccion;
+    private String address;
     @Column(name = "phone_number")
-    private String numeroTelefono;
+    private String phone_number;
     @Column(name = "birth_date")
-    private Date fechaNacimiento;
+    private Date birth_date;
 }
