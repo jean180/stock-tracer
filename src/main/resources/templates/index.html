@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{base/base :: mainHead}"></head>
 <body>
     <nav th:replace="~{base/base :: mainNav}"></nav>
@@ -15,9 +15,10 @@
                     <h1 class="display-4">Bienvenidos a Recipe Master</h1>
                     <p class="lead">Aquí encontrarás las mejores recetas de cocina para sorprender a tu familia y amigos.</p>
                     <a href="#" class="btn btn-lg btn-success">Ver recetas</a>
+                    <a sec:authorize="!isAuthenticated()" th:href="@{/auth/login}" class="btn btn-lg btn-light btn-outline-success">Identifícate</a>
                 </div>
                 <div class="col-md-6">
-                    <img src="images/mainPage/mainFood.png" alt="Plato de comida" class="img-fluid">
+                    <img th:src="@{/images/mainPage/mainFood.png}" alt="Plato de comida" class="img-fluid">
                 </div>
             </div>
         </div>
