@@ -12,17 +12,18 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c74d9ad373.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/styles/mainStyles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/login.js}"></script>
     <meta charset="UTF-8">
     <title>Recipe Master</title>
 </head>
 
-<body>
+<body style="overflow:hidden;">
     <nav th:replace="~{base/base :: mainNav}"></nav>
 
-    <div class="row col-md-12">
+    <div class="row">
         <!-- Login Section -->
-        <card class="login-section col-md-6 vh-100" id="loginCard">
+        <card class="login-section col-md-6 bg-light" id="loginCard">
             <div class="container d-flex justify-content-center align-items-center vh-100">
                 <form class="p-5 rounded shadow" style="width: 400px;">
                     <h1 class="mb-4 text-center">Login</h1>
@@ -39,8 +40,13 @@
                 </form>
             </div>
         </card>
+        
+        <div class="col-md-6 d-flex justify-content-center bg-light bg-gradient align-items-center vh-100" style="position: absolute; right: 0;">
+            <button type="button" id="showLoginButton" class="btn btn-lg btn-success d-none shadow" onclick="tratarVisibilidadCards(this.id)">Show Login Form <i class="fa-solid fa-hand-point-right"></i></button>
+            <button type="button" id="showRegisterButton" class="btn btn-lg btn-success shadow" onclick="tratarVisibilidadCards(this.id)"><i class="fa-solid fa-hand-point-left"></i> Show Register Form</button>
+        </div>
         <!-- Register Section -->
-        <card class="login-section col-md-6 vh-100" id="registerCard">
+        <card class="login-section col-md-6 bg-light" id="registerCard">
             <div class="container d-flex justify-content-center align-items-center vh-100">
                 <form class="p-5 rounded shadow" style="width: 400px;">
                     <h1 class="mb-4 text-center">Register</h1>
@@ -65,7 +71,6 @@
             </div>
         </card>
     </div>
-
     <footer th:replace="~{base/base :: mainFooter}"></footer>
 </body>
 

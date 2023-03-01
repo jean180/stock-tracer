@@ -1,40 +1,25 @@
-var showLogin = true;
-var showRegister = false;
-window.onload = function() {
-  
-  tratarVisibilidadCards();
+function tratarVisibilidadCards(buttonId){
+  var showLoginButton = $("#showLoginButton");
+  var showRegisterButton = $("#showRegisterButton");
 
+  if(buttonId == 'showLoginButton'){
+    showRegisterButton.removeClass("d-none");
+    showLoginButton.addClass("d-none");
+  }
+
+  if(buttonId == 'showRegisterButton'){
+    showLoginButton.removeClass("d-none");
+    showRegisterButton.addClass("d-none");
+  }
+  moveDiv(buttonId)
 }
 
-function tratarVisibilidadCards(){
-  var loginCard = document.getElementById("loginCard");
-  var registerCard = document.getElementById("registerCard");
-
-  if (showLogin == true) {
-    loginCard.classList.remove("invisible");
-  } else {
-    loginCard.classList.add("invisible");
-  }
-
-  if (showRegister == true) {
-    registerCard.classList.remove("invisible");
-  } else {
-    registerCard.classList.add("invisible");
-  }
-}
-
-function pruebaVisib(){
-  if (showLogin == true) {
-    showLogin = false;
-  } else {
-    showLogin = true;
-  }
+function moveDiv(buttonId) {
+  var button = $('#' + buttonId).parent();
+  var bodyWidth = $('body').width();
+  var buttonWidth = button.width();
+  var leftPosition = button.position().left;
+  var newPosition = leftPosition < bodyWidth / 2 ? bodyWidth - buttonWidth : 0;
   
-  if (showRegister == true) {
-    showRegister = false;
-  } else {
-    showRegister = true;
-  }
-
-  tratarVisibilidadCards();
+  button.animate({ left: newPosition }, "slow");
 }
