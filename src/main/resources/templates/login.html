@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:replace="~{base/base :: mainHead(~{::script})}">
     <script th:src="@{/js/login.js}"></script>
 </head>
@@ -13,7 +14,7 @@
         <script src="https://kit.fontawesome.com/c74d9ad373.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/styles/mainStyles.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script th:src="@{/js/login.js}"></script>
+        <script src="../static/js/login.js"></script>
         <meta charset="UTF-8">
         <title>Recipe Master</title>
     </head>
@@ -30,11 +31,13 @@
                     th:action="@{/auth/login}" role="form">
                     <h1 class="mb-4 text-center">Login</h1>
                     <!-- Alert en caso de error-->
-                    <div th:if="${param.error}" id="login-alert" class="alert alert-danger col-sm-12">Invalid username and password.</div>
-                    <!---->
+                    <div th:if="${param.error}" id="login-alert" class="alert alert-danger col-sm-12">Invalid username
+                        and password.</div>
+                    <!--FIN-->
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email</label>
-                        <input type="email"  name="username" class="form-control" placeholder="user@gmail.com" id="loginEmail" required>
+                        <input type="email" name="username" class="form-control" placeholder="user@gmail.com"
+                            id="loginEmail" required>
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
@@ -45,31 +48,45 @@
                 </form>
             </div>
         </card>
-        
-        <div class="col-md-6 d-flex justify-content-center bg-light bg-gradient align-items-center vh-100" style="position: absolute; right: 0;">
-            <button type="button" id="showLoginButton" class="btn btn-lg btn-success d-none shadow" onclick="tratarVisibilidadCards(this.id)">Show Login Form <i class="fa-solid fa-hand-point-right"></i></button>
-            <button type="button" id="showRegisterButton" class="btn btn-lg btn-success shadow" onclick="tratarVisibilidadCards(this.id)"><i class="fa-solid fa-hand-point-left"></i> Show Register Form</button>
+
+        <div class="col-md-6 d-flex justify-content-center bg-light bg-gradient align-items-center vh-100"
+            style="position: absolute; right: 0;">
+            <button type="button" id="showLoginButton" class="btn btn-lg btn-success d-none shadow"
+                onclick="tratarVisibilidadCards(this.id)">Show Login Form <i
+                    class="fa-solid fa-hand-point-right"></i></button>
+            <button type="button" id="showRegisterButton" class="btn btn-lg btn-success shadow"
+                onclick="tratarVisibilidadCards(this.id)"><i class="fa-solid fa-hand-point-left"></i> Show Register
+                Form</button>
         </div>
         <!-- Register Section -->
         <card class="login-section col-md-6 bg-light" id="registerCard">
             <div class="container d-flex justify-content-center align-items-center vh-100">
-                <form class="p-5 rounded shadow" style="width: 400px;">
+                <form id="registerForm" class="p-5 rounded shadow" style="width: 400px;" method="post"
+                    th:action="@{/auth/register}" role="form">
                     <h1 class="mb-4 text-center">Register</h1>
+                    <!-- Alert en caso de error-->
+                    <div class="d-none alert alert-danger col-sm-12" id="registerAlert" style="position: static;">The
+                        passwords don't match</div>
+                    <div th:if="${param.userAlreadyExist}" class="alert alert-danger col-sm-12"
+                        id="userAlreadyExist-alert" style="position: static;">User already exist</div>
+                    <!--FIN-->
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="First Name" id="name">
+                        <input type="text" class="form-control" placeholder="First Name" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Surname" id="surname">
+                        <input type="text" class="form-control" placeholder="Surname" id="surname" name="surnames"
+                            required>
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Email" id="email">
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" placeholder="Password" id="password">
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password"
+                            required>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" placeholder="Confirm password"
-                            id="confirmPassword">
+                        <input type="password" class="form-control" placeholder="Confirm password" id="confirmPassword"
+                            required>
                     </div>
                     <button type="submit" class="btn btn-success w-100">Register</button>
                 </form>

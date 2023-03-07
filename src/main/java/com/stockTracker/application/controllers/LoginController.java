@@ -1,6 +1,7 @@
 package com.stockTracker.application.controllers;
 
 import com.stockTracker.application.entities.User;
+import com.stockTracker.application.exceptions.UserAlreadyExistsException;
 import com.stockTracker.application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +28,13 @@ public class LoginController {
     }
 
     @PostMapping("/auth/register")
-    public String register(@ModelAttribute User user) {
-        userService.register(user);
+    public String register(Model model, @ModelAttribute User user) throws UserAlreadyExistsException {
+        try {
+            userService.register(user);
+        } catch (UserAlreadyExistsException e) {
+            model.addAttribute("userAlreadyExist", e.getMessage());
+            return "redirect:/auth/login?userAlreadyExist";
+        }
         return "redirect:/auth/login";
     }
 }

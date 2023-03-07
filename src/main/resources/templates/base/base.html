@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:fragment="mainHead(scripts)">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c74d9ad373.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles/mainStyles.css}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <title>Recipe Master</title>
     <th:block th:if="${scripts != null}">
-        <th:block th:replace="${scripts}"/>
+        <th:block th:replace="${scripts}" />
     </th:block>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav th:fragment="mainNav" class="navbar navbar-expand-lg navbar-dark sticky-top mainColor">
@@ -20,9 +22,11 @@
                 <i class="fa-solid fa-carrot"></i>
                 Recipe Master
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!--TODO Al colapsar no funciona el botón para mostrar las opciones-->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -37,7 +41,8 @@
                     <button class="btn btn-light btn-outline-success" type="submit"><i class="fas fa-search"></i>
                     </button>
                 </form>
-                <button type="button" class="btn rounded-circle btn-light btn-outline-success "><i class="fa-regular fa-user"></i></button>
+                <button type="button" class="btn rounded-circle btn-light btn-outline-success "><i
+                        class="fa-regular fa-user"></i></button>
             </div>
         </div>
     </nav>
@@ -53,4 +58,5 @@
     </footer>
     <!-- FIN Footer -->
 </body>
+
 </html>
