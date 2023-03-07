@@ -51,28 +51,21 @@
             <button type="button" id="showRegisterButton" class="btn btn-lg btn-success shadow" onclick="tratarVisibilidadCards(this.id)"><i class="fa-solid fa-hand-point-left"></i> Show Register Form</button>
         </div>
         <!-- Register Section -->
-        <card class="register-section col-md-6 bg-light" id="registerCard">
+        <card class="login-section col-md-6 bg-light" id="registerCard">
             <div class="container d-flex justify-content-center align-items-center vh-100">
-                <form id="registerForm" class="p-5 rounded shadow" style="width: 400px;" method="post"
-                th:action="@{/auth/register}" role="form">                    
+                <form class="p-5 rounded shadow" style="width: 400px;">
                     <h1 class="mb-4 text-center">Register</h1>
-                    <!-- Alert en caso de error-->
-                    <div id="register-alert" class="alert alert-danger col-sm-12 d-none">
-                        <p th:if="${param.errorRegister}" th:attr="registerError=${param.errorRegister}" class="d-none" id="userAlredyExistError">User alredy registered.</p> 
-                        <p class="d-none" id="passwordError">The passwords do not match</p>
-                    </div>
-                    <!---->
                     <div class="mb-3">
-                        <input type="text" name="name" class="form-control" placeholder="First Name" id="name">
+                        <input type="text" class="form-control" placeholder="First Name" id="name">
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="surnames" class="form-control" placeholder="Surname" id="surname">
+                        <input type="text" class="form-control" placeholder="Surname" id="surname">
                     </div>
                     <div class="mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email" id="email">
+                        <input type="email" class="form-control" placeholder="Email" id="email">
                     </div>
                     <div class="mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" id="password">
+                        <input type="password" class="form-control" placeholder="Password" id="password">
                     </div>
                     <div class="mb-3">
                         <input type="password" class="form-control" placeholder="Confirm password"
