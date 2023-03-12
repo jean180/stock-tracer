@@ -50,10 +50,9 @@ public class SecurityConfig {
                         .loginPage("/auth/login")
                         .permitAll()
                 )
-                .logout((authz) -> authz
-                        .logoutUrl("/auth/logout")
-                        .logoutSuccessUrl("/public/index")
-                );
+                .logout()
+                .logoutUrl("/auth/logout")
+                .permitAll();
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();

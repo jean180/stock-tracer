@@ -13,7 +13,7 @@ public class PublicZoneController {
     @Autowired
     UserRepository repository;
 
-    @GetMapping("/")
+    @GetMapping({"/","/index"})
     public String index() {
         return "index";
     }
