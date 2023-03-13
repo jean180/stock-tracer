@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{base/base :: mainHead(null)}"></head>
+
+<body>
+  <nav th:replace="~{base/base :: mainNav}"></nav>
+
+  <div class="container mt-3">
+    <h1>Listado de Productos</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo de Medida</th>
+          <th>Tipo de Producto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="product : ${products}">
+          <td th:text="${product.name}"></td>
+          <td th:text="${product.weightType}"></td>
+          <td th:text="${product.product_type.name}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <footer th:replace="~{base/base :: mainFooter}"></footer>
+</body>
+
+</html>
