@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<!--
 
 <head th:replace="~{base/base :: mainHead(null)}"></head>
--->
+<!--
 
 <head>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -16,23 +15,32 @@
   <meta charset="UTF-8">
   <title>Recipe Master</title>
 </head>
+-->
 
 <body>
   <nav th:replace="~{base/base :: mainNav}"></nav>
 
   <div class="container">
     <h1 class="text-center">Listado de Productos</h1>
-    <div class="row">
-      <div class="card col-md-3 mx-1" th:each="product : ${products}">
-        <div class="card-header row text-center">
-          <h5 class="card-title" th:text="${product.name}">Nombre</h5>
-        </div>
-        <div class="card-body">
-          <img th:src="@{'/images/products/' + ${product.name} + '.png'}" class="card-img img-fluid" alt="tomate">
-        </div>
-        <div class="card-footer row">
-          <div class="text-start col-md-6" th:text="${product.product_type.name}">tipo</div>
-          <div class="text-end col-md-6" th:text="${product.weightType}">medida</div>
+    <div class="row row-cols-1 row-cols-md-4 g-4 text-white">
+      <div class="col-md-3" th:each="product : ${products}">
+        <div class="card h-100">
+          <div class="card-header text-center mainColor">
+            <h4 th:text="${product.name}">Nombre</h5>
+          </div>
+          <div class="card-body text-center">
+            <img th:src="@{'/images/products/' + ${product.name} + '.png'}" class="card-img img-fluid" alt="tomate">
+          </div>
+          <div class="card-footer mainColor">
+            <div class="row">
+              <div class="col-md-6">
+                <div th:text="${product.product_type.name}">tipo</div>
+              </div>
+              <div class="col-md-6 text-end">
+                <div th:text="${product.weightType}">medida</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
