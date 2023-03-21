@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{base/base :: mainHead(null)}"></head>
+<head th:replace="~{base/base :: mainHead(~{::script})}">
+  <script th:src="@{/js/products.js}"></script>
+</head>
 <!--
 
 <head>
@@ -11,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/c74d9ad373.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="/static/css/mainStyles.css">
-  <script src="../static/js/login.js"></script>
+  <script src="/static/js/products.js"></script>
   <meta charset="UTF-8">
   <title>Recipe Master</title>
 </head>
@@ -20,12 +22,16 @@
 <body>
   <nav th:replace="~{base/base :: mainNav}"></nav>
 
-  <div class="container mb-5">
+  <div th:fragment="modalProducts" class="container mb-5">
     <h1 class="text-center">Listado de Productos</h1>
     <div class="row row-cols-1 row-cols-md-4 g-4 text-white">
-      <div class="col-md-3" th:each="product : ${products}">
+      <div class="col-md-3" th:each="product : ${products}" th:id="${product.id}" onclick="addRemoveProduct(this.id)">
         <div class="card h-100">
           <div class="card-header text-center mainColor">
+            <div class="float-end position-relative">
+              <i class="fa-solid fa-plus position-absolute" th:id="'plusIcon-'+${product.id}"></i>
+              <i class="fa-solid fa-minus position-absolute d-none" th:id="'minusIcon-'+${product.id}"></i>
+            </div>
             <h4 th:text="${product.name}">Nombre</h5>
           </div>
           <div class="card-body text-center">
