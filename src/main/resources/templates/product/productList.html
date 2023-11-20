@@ -25,14 +25,14 @@
   <div th:fragment="modalProducts" class="container mb-5">
     <h1 class="text-center">Listado de Productos</h1>
     <div class="row row-cols-1 row-cols-md-4 g-4 text-white">
-      <div class="col-md-3" th:each="product : ${products}" th:id="${product.id}" onclick="addRemoveProduct(this.id)">
+      <div class="col-md-3" th:each="product : ${products}" th:id="${product.id}" onclick="addRemoveProductToList(this.id)">
         <div class="card h-100">
           <div class="card-header text-center mainColor">
             <div class="float-end position-relative">
               <i class="fa-solid fa-plus position-absolute" th:id="'plusIcon-'+${product.id}"></i>
               <i class="fa-solid fa-minus position-absolute d-none" th:id="'minusIcon-'+${product.id}"></i>
             </div>
-            <h4 th:text="${product.name}">Nombre</h5>
+            <h4 th:text="${product.name}">Nombre</h4>
           </div>
           <div class="card-body text-center">
             <img th:src="@{'/images/products/' + ${product.name} + '.png'}" class="card-img img-fluid" alt="tomate">
@@ -43,7 +43,7 @@
                 <div th:text="${product.product_type.name}">tipo</div>
               </div>
               <div class="col-md-6 text-end">
-                <div th:text="${product.weightType}">medida</div>
+                <div th:text="${product.weight_type.type}">medida</div>
               </div>
             </div>
           </div>

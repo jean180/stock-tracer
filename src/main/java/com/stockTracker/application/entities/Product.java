@@ -16,11 +16,13 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "weight_type")
-    private String weightType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "weight_type")
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    private Weight_Type weight_type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_type_id")
+    @JoinColumn(name = "product_type")
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Product_Type product_type;
 }

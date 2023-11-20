@@ -1,5 +1,5 @@
 var idProducts = [];
-function addRemoveProduct(productId) {
+function addRemoveProductToList(productId) {
     var plusIcon = $("#plusIcon-" + productId);
     var minusIcon = $("#minusIcon-" + productId);
     if (idProducts.indexOf(productId) === -1) {
